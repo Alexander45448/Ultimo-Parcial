@@ -8,7 +8,7 @@ module.exports.getOne = (req, res, next) => {
             nombre: req.params.nombre
         }, "-distribuidora -login_count")
         .then((foundBebida) => {
-
+            debug("Found Bebida", foundBebida);
             if (foundBebida)
                 return res.status(200).json(foundBebida);
             else
