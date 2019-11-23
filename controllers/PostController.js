@@ -1,4 +1,4 @@
-var User = require('../models/user');
+var Bebida = require('../models/bebida');
 var Post = require('../models/post');
 var debug = require('debug')('blog:post_controller');
 
@@ -20,17 +20,17 @@ module.exports.getOne = (req, res, next) => {
 
 module.exports.create = (req, res, next) => {
     debug("Create Post");
-    User.findOne({
-            username: req.body.author
+    Bebida.findOne({
+            nombre: req.body.author
         })
-        .then(user => {
-            if (!user) {
+        .then(Bebida => {
+            if (!Bebida) {
                 throw new Error("El autor no existe");
             } else {
 
                 let post = new Post({
                     title: req.body.title,
-                    author: user._id,
+                    author: Bebida._id,
                     tags: (req.body.tags || "").split(","),
                     state: req.body.state || 'draft',
                     content: req.body.content

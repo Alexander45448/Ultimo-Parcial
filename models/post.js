@@ -8,22 +8,22 @@ var PostSchema = new Schema({
     },
     author: {
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Bebida",
         required: true
     },
     comments: [{
         author: {
             type: Schema.Types.ObjectId,
-            ref: "User"
+            ref: "Bebida"
         },
         content: { type: String, require: true }
     }],
-    tags: { type: [String], index: true } ,
+    tags: { type: [String], index: true },
     state: {
         type: String,
         enum: ['draft', 'published', 'private']
     },
-    content : {
+    content: {
         type: String,
         required: true
     }
@@ -33,14 +33,14 @@ var PostSchema = new Schema({
 
 
 PostSchema.index({
-  title: 'text',
-  content: 'text',
+    title: 'text',
+    content: 'text',
 }, {
-  weights: {
-    title: 2,
-    content: 1,
-    tags: 3
-  },
+    weights: {
+        title: 2,
+        content: 1,
+        tags: 3
+    },
 });
 
 module.exports = mongoose.model("Post", PostSchema);

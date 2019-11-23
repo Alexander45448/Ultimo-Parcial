@@ -1,19 +1,19 @@
 const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var UserSchema = Schema({
-    username: {
+var BebidaSchema = Schema({
+    nombre: {
         type: String,
         required: true,
-       unique:true
+        unique: true
     },
-    first_name: String,
-    last_name: String,
-    email: {
-        type: String,
+    tipo_bebida: String,
+    precio: Number,
+    id_bebida: {
+        type: Number,
         required: true
     },
-    password: {
+    distribuidora: {
         type: String,
         required: true
     },
@@ -22,4 +22,4 @@ var UserSchema = Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Bebida", BebidaSchema);
